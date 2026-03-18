@@ -11194,7 +11194,7 @@ AX_HARDEN_CC_COMPILER_FLAGS
 # our use of enum constructs to define fungible constants.
 if test "$KERNEL_MODE_DEFAULTS" != "yes"
 then
-    AX_CHECK_COMPILE_FLAG([-Werror -Wno-deprecated-enum-enum-conversion],
+    AX_CHECK_COMPILE_FLAG([-Wno-deprecated-enum-enum-conversion],
       [AX_APPEND_FLAG([-Wno-deprecated-enum-enum-conversion], [AM_CFLAGS])])
 fi
 
