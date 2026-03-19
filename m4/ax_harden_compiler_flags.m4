@@ -128,9 +128,7 @@
         ])
       AX_APPEND_COMPILE_FLAGS([-Waddress],,[$ax_append_compile_cflags_extra])
       AX_APPEND_COMPILE_FLAGS([-Warray-bounds],,[$ax_append_compile_cflags_extra])
-      AS_IF([test x"m4_case(_AC_LANG,
-                     [C], [$GCC],
-                     [no])" = xyes],[
+      AS_IF([test "$CC" = "g++"],[],[
         AX_APPEND_COMPILE_FLAGS([-Wbad-function-cast],,[$ax_append_compile_cflags_extra])
         ])
       dnl Not in use -Wc++-compat
@@ -142,16 +140,16 @@
       AX_APPEND_COMPILE_FLAGS([-Wmaybe-uninitialized],,[$ax_append_compile_cflags_extra])
       AX_APPEND_COMPILE_FLAGS([-Wmissing-field-initializers],,[$ax_append_compile_cflags_extra])
       AX_APPEND_COMPILE_FLAGS([-Wmissing-noreturn],,[$ax_append_compile_cflags_extra])
-      AS_IF([test x"m4_case(_AC_LANG,
-                     [C], [$GCC],
-                     [no])" = xyes],[
+      AS_IF([test "$CC" = "g++"],[],[
         AX_APPEND_COMPILE_FLAGS([-Wmissing-prototypes],,[$ax_append_compile_cflags_extra])
         AX_APPEND_COMPILE_FLAGS([-Wnested-externs],,[$ax_append_compile_cflags_extra])
         AX_APPEND_COMPILE_FLAGS([-Woverride-init],,[$ax_append_compile_cflags_extra])
         ])
       AX_APPEND_COMPILE_FLAGS([-Wnormalized=id],,[$ax_append_compile_cflags_extra])
       AX_APPEND_COMPILE_FLAGS([-Wpointer-arith],,[$ax_append_compile_cflags_extra])
-      AX_APPEND_COMPILE_FLAGS([-Wpointer-sign],,[$ax_append_compile_cflags_extra])
+      AS_IF([test "$CC" = "g++"],[],[
+        AX_APPEND_COMPILE_FLAGS([-Wpointer-sign],,[$ax_append_compile_cflags_extra])
+        ])
 dnl      AX_APPEND_COMPILE_FLAGS([-Wredundant-decls],,[$ax_append_compile_cflags_extra])
       AS_CASE([$CFLAGS], [*-Wno-shadow*], [], [
         AX_APPEND_COMPILE_FLAGS([-Wshadow],,[$ax_append_compile_cflags_extra])
@@ -159,7 +157,9 @@ dnl      AX_APPEND_COMPILE_FLAGS([-Wredundant-decls],,[$ax_append_compile_cflags
       AX_APPEND_COMPILE_FLAGS([-Wshorten-64-to-32],,[$ax_append_compile_cflags_extra])
       AX_APPEND_COMPILE_FLAGS([-Wsign-compare],,[$ax_append_compile_cflags_extra])
       AX_APPEND_COMPILE_FLAGS([-Wstrict-overflow=1],,[$ax_append_compile_cflags_extra])
-      AX_APPEND_COMPILE_FLAGS([-Wstrict-prototypes],,[$ax_append_compile_cflags_extra])
+      AS_IF([test "$CC" = "g++"],[],[
+        AX_APPEND_COMPILE_FLAGS([-Wstrict-prototypes],,[$ax_append_compile_cflags_extra])
+        ])
       AX_APPEND_COMPILE_FLAGS([-Wswitch-enum],,[$ax_append_compile_cflags_extra])
       AX_APPEND_COMPILE_FLAGS([-Wundef],,[$ax_append_compile_cflags_extra])
       AX_APPEND_COMPILE_FLAGS([-Wunused],,[$ax_append_compile_cflags_extra])
