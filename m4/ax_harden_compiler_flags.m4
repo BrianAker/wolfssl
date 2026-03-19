@@ -128,7 +128,11 @@
         ])
       AX_APPEND_COMPILE_FLAGS([-Waddress],,[$ax_append_compile_cflags_extra])
       AX_APPEND_COMPILE_FLAGS([-Warray-bounds],,[$ax_append_compile_cflags_extra])
-      AX_APPEND_COMPILE_FLAGS([-Wbad-function-cast],,[$ax_append_compile_cflags_extra])
+      AS_IF([test x"m4_case(_AC_LANG,
+                     [C], [$GCC],
+                     [no])" = xyes],[
+        AX_APPEND_COMPILE_FLAGS([-Wbad-function-cast],,[$ax_append_compile_cflags_extra])
+        ])
       dnl Not in use -Wc++-compat
       AX_APPEND_COMPILE_FLAGS([-Wchar-subscripts],,[$ax_append_compile_cflags_extra])
       AX_APPEND_COMPILE_FLAGS([-Wcomment],,[$ax_append_compile_cflags_extra])
@@ -138,10 +142,14 @@
       AX_APPEND_COMPILE_FLAGS([-Wmaybe-uninitialized],,[$ax_append_compile_cflags_extra])
       AX_APPEND_COMPILE_FLAGS([-Wmissing-field-initializers],,[$ax_append_compile_cflags_extra])
       AX_APPEND_COMPILE_FLAGS([-Wmissing-noreturn],,[$ax_append_compile_cflags_extra])
-      AX_APPEND_COMPILE_FLAGS([-Wmissing-prototypes],,[$ax_append_compile_cflags_extra])
-      AX_APPEND_COMPILE_FLAGS([-Wnested-externs],,[$ax_append_compile_cflags_extra])
+      AS_IF([test x"m4_case(_AC_LANG,
+                     [C], [$GCC],
+                     [no])" = xyes],[
+        AX_APPEND_COMPILE_FLAGS([-Wmissing-prototypes],,[$ax_append_compile_cflags_extra])
+        AX_APPEND_COMPILE_FLAGS([-Wnested-externs],,[$ax_append_compile_cflags_extra])
+        AX_APPEND_COMPILE_FLAGS([-Woverride-init],,[$ax_append_compile_cflags_extra])
+        ])
       AX_APPEND_COMPILE_FLAGS([-Wnormalized=id],,[$ax_append_compile_cflags_extra])
-      AX_APPEND_COMPILE_FLAGS([-Woverride-init],,[$ax_append_compile_cflags_extra])
       AX_APPEND_COMPILE_FLAGS([-Wpointer-arith],,[$ax_append_compile_cflags_extra])
       AX_APPEND_COMPILE_FLAGS([-Wpointer-sign],,[$ax_append_compile_cflags_extra])
 dnl      AX_APPEND_COMPILE_FLAGS([-Wredundant-decls],,[$ax_append_compile_cflags_extra])
